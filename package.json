@@ -1,0 +1,42 @@
+{
+  "name": "claw402",
+  "version": "0.1.0",
+  "description": "Typed SDK for claw402.ai — pay-per-call crypto data APIs via x402",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "viem": "^2.46.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "typescript": "^5.7.0"
+  },
+  "keywords": [
+    "claw402",
+    "x402",
+    "crypto",
+    "api",
+    "sdk",
+    "usdc",
+    "payments"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NoFxAiOS/claw402-js"
+  }
+}
