@@ -10,7 +10,7 @@ Typed TypeScript SDK for [claw402.ai](https://claw402.ai) — pay-per-call crypt
 ## Install
 
 ```bash
-npm install claw402
+npm install NoFxAiOS/claw402-js
 ```
 
 ## Quick Start
