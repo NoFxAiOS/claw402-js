@@ -23,14 +23,14 @@ export class NofxosAi500 {
 export class NofxosAi300 {
   constructor(private _client: Claw402) {}
 
-  /** AI300 quant model rankings (by fund flow strength) — $0.001/call */
+  /** AI300 quant model rankings (by fund flow strength) — $0.00001/call */
   list(params?: { 
     limit?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/nofx/ai300/list', params)
   }
 
-  /** AI300 model statistics (by signal strength distribution) — $0.001/call */
+  /** AI300 model statistics (by signal strength distribution) — $0.00001/call */
   stats(): Promise<any> {
     return this._client._get('/api/v1/nofx/ai300/stats')
   }
@@ -39,7 +39,7 @@ export class NofxosAi300 {
 export class NofxosOi {
   constructor(private _client: Claw402) {}
 
-  /** Top open interest increase rankings — $0.001/call */
+  /** Top open interest increase rankings — $0.00001/call */
   topRanking(params?: { 
     limit?: string | number
     duration?: string | number
@@ -47,7 +47,7 @@ export class NofxosOi {
     return this._client._get('/api/v1/nofx/oi/top-ranking', params)
   }
 
-  /** Top open interest decrease rankings — $0.001/call */
+  /** Top open interest decrease rankings — $0.00001/call */
   lowRanking(params?: { 
     limit?: string | number
     duration?: string | number
@@ -59,7 +59,7 @@ export class NofxosOi {
 export class NofxosNetflow {
   constructor(private _client: Claw402) {}
 
-  /** Top net capital inflow rankings — $0.001/call */
+  /** Top net capital inflow rankings — $0.00001/call */
   topRanking(params?: { 
     limit?: string | number
     duration?: string | number
@@ -69,7 +69,7 @@ export class NofxosNetflow {
     return this._client._get('/api/v1/nofx/netflow/top-ranking', params)
   }
 
-  /** Top net capital outflow rankings — $0.001/call */
+  /** Top net capital outflow rankings — $0.00001/call */
   lowRanking(params?: { 
     limit?: string | number
     duration?: string | number
@@ -83,7 +83,7 @@ export class NofxosNetflow {
 export class NofxosPrice {
   constructor(private _client: Claw402) {}
 
-  /** Price change rankings (gainers & losers) — $0.001/call */
+  /** Price change rankings (gainers & losers) — $0.00001/call */
   ranking(params?: { 
     duration?: string | number
   }): Promise<any> {
@@ -94,7 +94,7 @@ export class NofxosPrice {
 export class NofxosLongShort {
   constructor(private _client: Claw402) {}
 
-  /** Long/short ratio anomaly coin list — $0.001/call */
+  /** Long/short ratio anomaly coin list — $0.00001/call */
   list(params?: { 
     limit?: string | number
   }): Promise<any> {
@@ -105,14 +105,14 @@ export class NofxosLongShort {
 export class NofxosFundingRate {
   constructor(private _client: Claw402) {}
 
-  /** Top positive funding rate rankings — $0.001/call */
+  /** Top positive funding rate rankings — $0.00001/call */
   top(params?: { 
     limit?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/nofx/funding-rate/top', params)
   }
 
-  /** Top negative funding rate rankings — $0.001/call */
+  /** Top negative funding rate rankings — $0.00001/call */
   low(params?: { 
     limit?: string | number
   }): Promise<any> {
@@ -123,7 +123,7 @@ export class NofxosFundingRate {
 export class NofxosOiCap {
   constructor(private _client: Claw402) {}
 
-  /** Open interest market cap rankings — $0.001/call */
+  /** Open interest market cap rankings — $0.00001/call */
   ranking(params?: { 
     limit?: string | number
   }): Promise<any> {
@@ -134,14 +134,14 @@ export class NofxosOiCap {
 export class NofxosUpbit {
   constructor(private _client: Claw402) {}
 
-  /** Upbit hot coins rankings (by trading volume) — $0.001/call */
+  /** Upbit hot coins rankings (by trading volume) — $0.00001/call */
   hot(params?: { 
     limit?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/nofx/upbit/hot', params)
   }
 
-  /** Upbit net inflow rankings — $0.001/call */
+  /** Upbit net inflow rankings — $0.00001/call */
   netflowTopRanking(params?: { 
     limit?: string | number
     duration?: string | number
@@ -149,7 +149,7 @@ export class NofxosUpbit {
     return this._client._get('/api/v1/nofx/upbit/netflow/top-ranking', params)
   }
 
-  /** Upbit net outflow rankings — $0.001/call */
+  /** Upbit net outflow rankings — $0.00001/call */
   netflowLowRanking(params?: { 
     limit?: string | number
     duration?: string | number
@@ -161,7 +161,7 @@ export class NofxosUpbit {
 export class NofxosHeatmap {
   constructor(private _client: Claw402) {}
 
-  /** Order book heatmap overview (all coins) — $0.001/call */
+  /** Order book heatmap overview (all coins) — $0.00001/call */
   list(params?: { 
     trade?: string | number
     limit?: string | number
@@ -173,7 +173,7 @@ export class NofxosHeatmap {
 export class NofxosQueryRank {
   constructor(private _client: Claw402) {}
 
-  /** Today's most searched coin rankings — $0.001/call */
+  /** Today's most searched coin rankings — $0.00001/call */
   list(params?: { 
     limit?: string | number
   }): Promise<any> {

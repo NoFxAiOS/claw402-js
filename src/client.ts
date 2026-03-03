@@ -1,8 +1,15 @@
 import { privateKeyToAccount, type PrivateKeyAccount } from "viem/accounts"
 import type { Hex } from "viem"
 import { Claw402Error } from "./errors.js"
+import { AlpacaResource } from "./generated/alpaca.js"
+import { AlphavantageResource } from "./generated/alphavantage.js"
+import { AnthropicResource } from "./generated/anthropic.js"
 import { CoinankResource } from "./generated/coinank.js"
 import { NofxosResource } from "./generated/nofxos.js"
+import { OpenaiResource } from "./generated/openai.js"
+import { PolygonResource } from "./generated/polygon.js"
+import { TushareResource } from "./generated/tushare.js"
+import { TwelvedataResource } from "./generated/twelvedata.js"
 
 /** Base chain ID (Coinbase L2) */
 const BASE_CHAIN_ID = 8453
@@ -50,6 +57,20 @@ export class Claw402 {
   coinank: CoinankResource
   /** nofxos.ai — AI-powered crypto trading intelligence */
   nofxos: NofxosResource
+  /** Alpha Vantage — US stock quotes, OHLCV, fundamentals, technical indicators */
+  alphavantage: AlphavantageResource
+  /** Polygon.io — US stock tick data, options, snapshots, reference data */
+  polygon: PolygonResource
+  /** Alpaca Markets — US equities quotes, bars, trades, snapshots */
+  alpaca: AlpacaResource
+  /** Tushare Pro — Chinese A-share market data, financials, northbound capital */
+  tushare: TushareResource
+  /** Twelve Data — Forex, metals, indices, crypto OHLCV & technical indicators */
+  twelvedata: TwelvedataResource
+  /** OpenAI — GPT-4o, GPT-4o-mini, DALL-E, text embeddings */
+  openai: OpenaiResource
+  /** Anthropic — Claude Sonnet, Haiku, Opus via Messages API */
+  anthropic: AnthropicResource
 
   constructor(opts: Claw402Options) {
     if (!opts.privateKey.startsWith("0x")) {
@@ -57,42 +78,38 @@ export class Claw402 {
     }
     this._account = privateKeyToAccount(opts.privateKey as Hex)
     this._baseUrl = (opts.baseUrl ?? "https://claw402.ai").replace(/\/$/, "")
+    // Crypto data
     this.coinank = new CoinankResource(this)
     this.nofxos = new NofxosResource(this)
+    // US stocks
+    this.alphavantage = new AlphavantageResource(this)
+    this.polygon = new PolygonResource(this)
+    this.alpaca = new AlpacaResource(this)
+    // Chinese A-shares
+    this.tushare = new TushareResource(this)
+    // Forex, metals, indices
+    this.twelvedata = new TwelvedataResource(this)
+    // AI models
+    this.openai = new OpenaiResource(this)
+    this.anthropic = new AnthropicResource(this)
   }
 
-  /** @internal — used by generated resource classes */
-  async _get(
-    path: string,
-    params?: Record<string, string | number | undefined>
+  /** @internal — sign and send x402 payment for either GET or POST */
+  private async _x402Request(
+    urlStr: string,
+    init: RequestInit,
+    retryInit: RequestInit
   ): Promise<any> {
-    const url = new URL(path, this._baseUrl)
-    if (params) {
-      for (const [k, v] of Object.entries(params)) {
-        if (v !== undefined) url.searchParams.set(k, String(v))
-      }
-    }
-
     // Step 1: initial request — expect 402
-    const initResp = await fetch(url.toString())
-
-    if (initResp.ok) {
-      return initResp.json()
-    }
-
-    if (initResp.status !== 402) {
-      throw new Claw402Error(initResp.status, await initResp.text())
-    }
+    const initResp = await fetch(urlStr, init)
+    if (initResp.ok) return initResp.json()
+    if (initResp.status !== 402) throw new Claw402Error(initResp.status, await initResp.text())
 
     // Step 2: decode Payment-Required header
     const headerB64 = initResp.headers.get("Payment-Required")
-    if (!headerB64) {
-      throw new Claw402Error(402, "No Payment-Required header in 402 response")
-    }
+    if (!headerB64) throw new Claw402Error(402, "No Payment-Required header in 402 response")
 
-    const paymentRequired: PaymentRequired = JSON.parse(
-      Buffer.from(headerB64, "base64").toString("utf-8")
-    )
+    const paymentRequired: PaymentRequired = JSON.parse(Buffer.from(headerB64, "base64").toString("utf-8"))
     const req = paymentRequired.accepts.find(
       (a) => a.scheme === "exact" && a.network === `eip155:${BASE_CHAIN_ID}`
     )
@@ -153,9 +170,10 @@ export class Claw402 {
     }
     const payloadB64 = Buffer.from(JSON.stringify(payload)).toString("base64")
 
-    // Step 5: retry request with payment signature
-    const paidResp = await fetch(url.toString(), {
-      headers: { "PAYMENT-SIGNATURE": payloadB64 },
+    // Step 5: retry with payment signature
+    const paidResp = await fetch(urlStr, {
+      ...retryInit,
+      headers: { ...(retryInit.headers as Record<string, string> ?? {}), "PAYMENT-SIGNATURE": payloadB64 },
     })
 
     if (!paidResp.ok) {
@@ -165,14 +183,38 @@ export class Claw402 {
         try {
           const decoded = JSON.parse(Buffer.from(errHeader, "base64").toString("utf-8"))
           errMsg = decoded.error ?? ""
-        } catch { /* ignore decode errors */ }
+        } catch { /* ignore */ }
       }
-      if (!errMsg) {
-        errMsg = await paidResp.text()
-      }
+      if (!errMsg) errMsg = await paidResp.text()
       throw new Claw402Error(paidResp.status, errMsg)
     }
 
     return paidResp.json()
+  }
+
+  /** @internal — POST with JSON body, handles x402 payment */
+  async _post(path: string, body: Record<string, unknown>): Promise<any> {
+    const urlStr = this._baseUrl + path
+    const init: RequestInit = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    }
+    return this._x402Request(urlStr, init, init)
+  }
+
+  /** @internal — used by generated resource classes */
+  async _get(
+    path: string,
+    params?: Record<string, string | number | undefined>
+  ): Promise<any> {
+    const url = new URL(this._baseUrl + path)
+    if (params) {
+      for (const [k, v] of Object.entries(params)) {
+        if (v !== undefined) url.searchParams.set(k, String(v))
+      }
+    }
+    const urlStr = url.toString()
+    return this._x402Request(urlStr, {}, {})
   }
 }

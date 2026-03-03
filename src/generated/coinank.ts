@@ -7,7 +7,7 @@ import type { Claw402 } from '../client.js'
 export class CoinankKline {
   constructor(private _client: Claw402) {}
 
-  /** Candlestick data (SWAP/SPOT, multi-exchange) — $0.001/call */
+  /** Candlestick data (SWAP/SPOT, multi-exchange) — $0.00001/call */
   lists(params?: { 
     symbol?: string | number
     exchange?: string | number
@@ -23,27 +23,27 @@ export class CoinankKline {
 export class CoinankEtf {
   constructor(private _client: Claw402) {}
 
-  /** US Bitcoin ETF list (IBIT, FBTC, etc.) — $0.001/call */
+  /** US Bitcoin ETF list (IBIT, FBTC, etc.) — $0.00001/call */
   usBtc(): Promise<any> {
     return this._client._get('/api/v1/coinank/etf/us-btc')
   }
 
-  /** US Ethereum ETF list — $0.001/call */
+  /** US Ethereum ETF list — $0.00001/call */
   usEth(): Promise<any> {
     return this._client._get('/api/v1/coinank/etf/us-eth')
   }
 
-  /** US BTC ETF historical net inflow data — $0.001/call */
+  /** US BTC ETF historical net inflow data — $0.00001/call */
   usBtcInflow(): Promise<any> {
     return this._client._get('/api/v1/coinank/etf/us-btc-inflow')
   }
 
-  /** US ETH ETF historical net inflow data — $0.001/call */
+  /** US ETH ETF historical net inflow data — $0.00001/call */
   usEthInflow(): Promise<any> {
     return this._client._get('/api/v1/coinank/etf/us-eth-inflow')
   }
 
-  /** Hong Kong ETF historical net inflow data — $0.001/call */
+  /** Hong Kong ETF historical net inflow data — $0.00001/call */
   hkInflow(): Promise<any> {
     return this._client._get('/api/v1/coinank/etf/hk-inflow')
   }
@@ -52,7 +52,7 @@ export class CoinankEtf {
 export class CoinankHyper {
   constructor(private _client: Claw402) {}
 
-  /** HyperLiquid whale position rankings — $0.001/call */
+  /** HyperLiquid whale position rankings — $0.00001/call */
   topPosition(params?: { 
     sortBy?: string | number
     sortType?: string | number
@@ -62,7 +62,7 @@ export class CoinankHyper {
     return this._client._get('/api/v1/coinank/hyper/top-position', params)
   }
 
-  /** HyperLiquid whale latest trade actions — $0.001/call */
+  /** HyperLiquid whale latest trade actions — $0.00001/call */
   topAction(): Promise<any> {
     return this._client._get('/api/v1/coinank/hyper/top-action')
   }
@@ -71,7 +71,7 @@ export class CoinankHyper {
 export class CoinankTrades {
   constructor(private _client: Claw402) {}
 
-  /** Large market order list (whale trade monitor) — $0.001/call */
+  /** Large market order list (whale trade monitor) — $0.00001/call */
   large(params?: { 
     symbol?: string | number
     productType?: string | number
@@ -86,7 +86,7 @@ export class CoinankTrades {
 export class CoinankBigOrder {
   constructor(private _client: Claw402) {}
 
-  /** Large limit order list — $0.001/call */
+  /** Large limit order list — $0.00001/call */
   list(params?: { 
     symbol?: string | number
     exchangeType?: string | number
@@ -104,7 +104,7 @@ export class CoinankBigOrder {
 export class CoinankPrice {
   constructor(private _client: Claw402) {}
 
-  /** Trading pair latest real-time price — $0.001/call */
+  /** Trading pair latest real-time price — $0.00001/call */
   last(params?: { 
     symbol?: string | number
     exchange?: string | number
@@ -117,21 +117,21 @@ export class CoinankPrice {
 export class CoinankCoin {
   constructor(private _client: Claw402) {}
 
-  /** Coin market cap information — $0.001/call */
+  /** Coin market cap information — $0.00001/call */
   marketCap(params?: { 
     baseCoin?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/coinank/coin/market-cap', params)
   }
 
-  /** Supported coins list — $0.001/call */
+  /** Supported coins list — $0.00001/call */
   list(params?: { 
     productType?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/coinank/coin/list', params)
   }
 
-  /** Supported trading pairs list (by exchange) — $0.001/call */
+  /** Supported trading pairs list (by exchange) — $0.00001/call */
   symbols(params?: { 
     exchange?: string | number
     productType?: string | number
@@ -143,7 +143,7 @@ export class CoinankCoin {
 export class CoinankLongshort {
   constructor(private _client: Claw402) {}
 
-  /** Global long/short buy-sell ratio history — $0.001/call */
+  /** Global long/short buy-sell ratio history — $0.00001/call */
   buySell(params?: { 
     baseCoin?: string | number
     interval?: string | number
@@ -153,7 +153,7 @@ export class CoinankLongshort {
     return this._client._get('/api/v1/coinank/longshort/buy-sell', params)
   }
 
-  /** Real-time long/short ratio by exchange — $0.001/call */
+  /** Real-time long/short ratio by exchange — $0.00001/call */
   realtime(params?: { 
     baseCoin?: string | number
     interval?: string | number
@@ -161,7 +161,7 @@ export class CoinankLongshort {
     return this._client._get('/api/v1/coinank/longshort/realtime', params)
   }
 
-  /** Long/short account count ratio history (Binance/OKX/Bybit) — $0.001/call */
+  /** Long/short account count ratio history (Binance/OKX/Bybit) — $0.00001/call */
   person(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -172,7 +172,7 @@ export class CoinankLongshort {
     return this._client._get('/api/v1/coinank/longshort/person', params)
   }
 
-  /** Whale long/short position ratio (by position size) — $0.001/call */
+  /** Whale long/short position ratio (by position size) — $0.00001/call */
   position(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -183,7 +183,7 @@ export class CoinankLongshort {
     return this._client._get('/api/v1/coinank/longshort/position', params)
   }
 
-  /** Whale long/short ratio by account count (VIP1) — $0.001/call */
+  /** Whale long/short ratio by account count (VIP1) — $0.00001/call */
   account(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -194,7 +194,7 @@ export class CoinankLongshort {
     return this._client._get('/api/v1/coinank/longshort/account', params)
   }
 
-  /** Long/short ratio candlestick (VIP1; type: longShortPerson/Position/Account) — $0.001/call */
+  /** Long/short ratio candlestick (VIP1; type: longShortPerson/Position/Account) — $0.00001/call */
   kline(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -210,7 +210,7 @@ export class CoinankLongshort {
 export class CoinankMarketOrder {
   constructor(private _client: Claw402) {}
 
-  /** CVD cumulative volume delta — single pair (VIP3) — $0.001/call */
+  /** CVD cumulative volume delta — single pair (VIP3) — $0.00001/call */
   cvd(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -222,7 +222,7 @@ export class CoinankMarketOrder {
     return this._client._get('/api/v1/coinank/market-order/cvd', params)
   }
 
-  /** Market buy/sell order count — single pair (VIP3) — $0.001/call */
+  /** Market buy/sell order count — single pair (VIP3) — $0.00001/call */
   buySellCount(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -234,7 +234,7 @@ export class CoinankMarketOrder {
     return this._client._get('/api/v1/coinank/market-order/buy-sell-count', params)
   }
 
-  /** Market buy/sell value in USD — single pair (VIP3) — $0.001/call */
+  /** Market buy/sell value in USD — single pair (VIP3) — $0.00001/call */
   buySellValue(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -246,7 +246,7 @@ export class CoinankMarketOrder {
     return this._client._get('/api/v1/coinank/market-order/buy-sell-value', params)
   }
 
-  /** Market buy/sell volume in coins — single pair (VIP3) — $0.001/call */
+  /** Market buy/sell volume in coins — single pair (VIP3) — $0.00001/call */
   buySellVolume(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -258,7 +258,7 @@ export class CoinankMarketOrder {
     return this._client._get('/api/v1/coinank/market-order/buy-sell-volume', params)
   }
 
-  /** Aggregated CVD across exchanges (VIP3) — $0.001/call */
+  /** Aggregated CVD across exchanges (VIP3) — $0.00001/call */
   aggCvd(params?: { 
     baseCoin?: string | number
     interval?: string | number
@@ -270,7 +270,7 @@ export class CoinankMarketOrder {
     return this._client._get('/api/v1/coinank/market-order/agg-cvd', params)
   }
 
-  /** Aggregated buy/sell count across exchanges (VIP3) — $0.001/call */
+  /** Aggregated buy/sell count across exchanges (VIP3) — $0.00001/call */
   aggBuySellCount(params?: { 
     baseCoin?: string | number
     interval?: string | number
@@ -282,7 +282,7 @@ export class CoinankMarketOrder {
     return this._client._get('/api/v1/coinank/market-order/agg-buy-sell-count', params)
   }
 
-  /** Aggregated buy/sell value across exchanges (VIP3) — $0.001/call */
+  /** Aggregated buy/sell value across exchanges (VIP3) — $0.00001/call */
   aggBuySellValue(params?: { 
     baseCoin?: string | number
     interval?: string | number
@@ -294,7 +294,7 @@ export class CoinankMarketOrder {
     return this._client._get('/api/v1/coinank/market-order/agg-buy-sell-value', params)
   }
 
-  /** Aggregated buy/sell volume across exchanges (VIP3) — $0.001/call */
+  /** Aggregated buy/sell volume across exchanges (VIP3) — $0.00001/call */
   aggBuySellVolume(params?: { 
     baseCoin?: string | number
     interval?: string | number
@@ -310,7 +310,7 @@ export class CoinankMarketOrder {
 export class CoinankNews {
   constructor(private _client: Claw402) {}
 
-  /** News/flash list (type:1=flash,2=news; lang:zh/en) — $0.001/call */
+  /** News/flash list (type:1=flash,2=news; lang:zh/en) — $0.00001/call */
   list(params?: { 
     type?: string | number
     lang?: string | number
@@ -322,7 +322,7 @@ export class CoinankNews {
     return this._client._get('/api/v1/coinank/news/list', params)
   }
 
-  /** News/flash detail (id from news/list) — $0.001/call */
+  /** News/flash detail (id from news/list) — $0.00001/call */
   detail(params?: { 
     id?: string | number
   }): Promise<any> {
@@ -333,56 +333,56 @@ export class CoinankNews {
 export class CoinankIndicator {
   constructor(private _client: Claw402) {}
 
-  /** BTC 2-year MA multiplier indicator — $0.001/call */
+  /** BTC 2-year MA multiplier indicator — $0.00001/call */
   btcMultiplier(): Promise<any> {
     return this._client._get('/api/v1/coinank/indicator/btc-multiplier')
   }
 
-  /** Crypto fear & greed index — $0.001/call */
+  /** Crypto fear & greed index — $0.00001/call */
   fearGreed(): Promise<any> {
     return this._client._get('/api/v1/coinank/indicator/fear-greed')
   }
 
-  /** AHR999 Bitcoin accumulation indicator — $0.001/call */
+  /** AHR999 Bitcoin accumulation indicator — $0.00001/call */
   ahr999(): Promise<any> {
     return this._client._get('/api/v1/coinank/indicator/ahr999')
   }
 
-  /** Puell Multiple indicator — $0.001/call */
+  /** Puell Multiple indicator — $0.00001/call */
   puellMultiple(): Promise<any> {
     return this._client._get('/api/v1/coinank/indicator/puell-multiple')
   }
 
-  /** Pi Cycle Top indicator — $0.001/call */
+  /** Pi Cycle Top indicator — $0.00001/call */
   btcPi(): Promise<any> {
     return this._client._get('/api/v1/coinank/indicator/btc-pi')
   }
 
-  /** 200-week moving average heatmap — $0.001/call */
+  /** 200-week moving average heatmap — $0.00001/call */
   maHeatmap(): Promise<any> {
     return this._client._get('/api/v1/coinank/indicator/ma-heatmap')
   }
 
-  /** Altcoin Season Index — $0.001/call */
+  /** Altcoin Season Index — $0.00001/call */
   altcoinSeason(): Promise<any> {
     return this._client._get('/api/v1/coinank/indicator/altcoin-season')
   }
 
-  /** Coin market cap dominance rankings — $0.001/call */
+  /** Coin market cap dominance rankings — $0.00001/call */
   marketCapRank(params?: { 
     symbol?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/coinank/indicator/market-cap-rank', params)
   }
 
-  /** Grayscale holdings data (GBTC/ETHE, etc.) — $0.001/call */
+  /** Grayscale holdings data (GBTC/ETHE, etc.) — $0.00001/call */
   grayscale(params?: { 
     symbol?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/coinank/indicator/grayscale', params)
   }
 
-  /** Composite indicator charts (type=bitcoin-rainbow-v2) — $0.001/call */
+  /** Composite indicator charts (type=bitcoin-rainbow-v2) — $0.00001/call */
   charts(params?: { 
     type?: string | number
   }): Promise<any> {
@@ -393,14 +393,14 @@ export class CoinankIndicator {
 export class CoinankOi {
   constructor(private _client: Claw402) {}
 
-  /** Real-time open interest list by exchange — $0.001/call */
+  /** Real-time open interest list by exchange — $0.00001/call */
   all(params?: { 
     baseCoin?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/coinank/oi/all', params)
   }
 
-  /** Coin aggregated OI history (exchange=empty for all) — $0.001/call */
+  /** Coin aggregated OI history (exchange=empty for all) — $0.00001/call */
   aggChart(params?: { 
     baseCoin?: string | number
     exchange?: string | number
@@ -412,7 +412,7 @@ export class CoinankOi {
     return this._client._get('/api/v1/coinank/oi/agg-chart', params)
   }
 
-  /** Trading pair open interest history — $0.001/call */
+  /** Trading pair open interest history — $0.00001/call */
   symbolChart(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -424,7 +424,7 @@ export class CoinankOi {
     return this._client._get('/api/v1/coinank/oi/symbol-chart', params)
   }
 
-  /** Trading pair open interest candlestick — $0.001/call */
+  /** Trading pair open interest candlestick — $0.00001/call */
   kline(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -435,7 +435,7 @@ export class CoinankOi {
     return this._client._get('/api/v1/coinank/oi/kline', params)
   }
 
-  /** Aggregated open interest candlestick — $0.001/call */
+  /** Aggregated open interest candlestick — $0.00001/call */
   aggKline(params?: { 
     baseCoin?: string | number
     interval?: string | number
@@ -445,14 +445,14 @@ export class CoinankOi {
     return this._client._get('/api/v1/coinank/oi/agg-kline', params)
   }
 
-  /** Real-time open interest breakdown by exchange — $0.001/call */
+  /** Real-time open interest breakdown by exchange — $0.00001/call */
   byExchange(params?: { 
     baseCoin?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/coinank/oi/by-exchange', params)
   }
 
-  /** Historical open interest to market cap ratio — $0.001/call */
+  /** Historical open interest to market cap ratio — $0.00001/call */
   vsMarketCapHist(params?: { 
     baseCoin?: string | number
     endTime?: string | number
@@ -466,14 +466,14 @@ export class CoinankOi {
 export class CoinankRank {
   constructor(private _client: Claw402) {}
 
-  /** Visual screener (multi-dimensional rankings) — $0.001/call */
+  /** Visual screener (multi-dimensional rankings) — $0.00001/call */
   screener(params?: { 
     interval?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/coinank/rank/screener', params)
   }
 
-  /** Open interest vs market cap rankings (VIP2) — $0.001/call */
+  /** Open interest vs market cap rankings (VIP2) — $0.00001/call */
   oiVsMarketCap(params?: { 
     page?: string | number
     size?: string | number
@@ -483,7 +483,7 @@ export class CoinankRank {
     return this._client._get('/api/v1/coinank/rank/oi-vs-market-cap', params)
   }
 
-  /** Long/short account count ratio rankings — $0.001/call */
+  /** Long/short account count ratio rankings — $0.00001/call */
   longShort(params?: { 
     sortBy?: string | number
     sortType?: string | number
@@ -493,7 +493,7 @@ export class CoinankRank {
     return this._client._get('/api/v1/coinank/rank/long-short', params)
   }
 
-  /** Open interest amount rankings — $0.001/call */
+  /** Open interest amount rankings — $0.00001/call */
   oi(params?: { 
     sortBy?: string | number
     sortType?: string | number
@@ -503,7 +503,7 @@ export class CoinankRank {
     return this._client._get('/api/v1/coinank/rank/oi', params)
   }
 
-  /** Trade count rankings (VIP2; sortBy: h1Count/h4Count/d1Count) — $0.001/call */
+  /** Trade count rankings (VIP2; sortBy: h1Count/h4Count/d1Count) — $0.00001/call */
   tradeCount(params?: { 
     productType?: string | number
     sortBy?: string | number
@@ -512,7 +512,7 @@ export class CoinankRank {
     return this._client._get('/api/v1/coinank/rank/trade-count', params)
   }
 
-  /** Liquidation amount rankings — $0.001/call */
+  /** Liquidation amount rankings — $0.00001/call */
   liquidation(params?: { 
     sortBy?: string | number
     sortType?: string | number
@@ -522,7 +522,7 @@ export class CoinankRank {
     return this._client._get('/api/v1/coinank/rank/liquidation', params)
   }
 
-  /** Price change rankings (sortBy: priceChangeH24/priceChangeH1) — $0.001/call */
+  /** Price change rankings (sortBy: priceChangeH24/priceChangeH1) — $0.00001/call */
   price(params?: { 
     sortBy?: string | number
     sortType?: string | number
@@ -530,7 +530,7 @@ export class CoinankRank {
     return this._client._get('/api/v1/coinank/rank/price', params)
   }
 
-  /** Volume change rankings (sortBy: h24Volume/h1Volume) — $0.001/call */
+  /** Volume change rankings (sortBy: h24Volume/h1Volume) — $0.00001/call */
   volume(params?: { 
     sortBy?: string | number
     sortType?: string | number
@@ -542,14 +542,14 @@ export class CoinankRank {
 export class CoinankLiquidation {
   constructor(private _client: Claw402) {}
 
-  /** Liquidation statistics across time periods — $0.001/call */
+  /** Liquidation statistics across time periods — $0.00001/call */
   intervals(params?: { 
     baseCoin?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/coinank/liquidation/intervals', params)
   }
 
-  /** Aggregated liquidation history — $0.001/call */
+  /** Aggregated liquidation history — $0.00001/call */
   aggHistory(params?: { 
     baseCoin?: string | number
     interval?: string | number
@@ -559,7 +559,7 @@ export class CoinankLiquidation {
     return this._client._get('/api/v1/coinank/liquidation/agg-history', params)
   }
 
-  /** Trading pair liquidation history — $0.001/call */
+  /** Trading pair liquidation history — $0.00001/call */
   history(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -570,7 +570,7 @@ export class CoinankLiquidation {
     return this._client._get('/api/v1/coinank/liquidation/history', params)
   }
 
-  /** Liquidation order list — $0.001/call */
+  /** Liquidation order list — $0.00001/call */
   orders(params?: { 
     baseCoin?: string | number
     exchange?: string | number
@@ -581,7 +581,7 @@ export class CoinankLiquidation {
     return this._client._get('/api/v1/coinank/liquidation/orders', params)
   }
 
-  /** Liquidation map (price level distribution) — $0.001/call */
+  /** Liquidation map (price level distribution) — $0.00001/call */
   liqMap(params?: { 
     symbol?: string | number
     exchange?: string | number
@@ -590,7 +590,7 @@ export class CoinankLiquidation {
     return this._client._get('/api/v1/coinank/liquidation/liq-map', params)
   }
 
-  /** Aggregated liquidation map (VIP4) — $0.001/call */
+  /** Aggregated liquidation map (VIP4) — $0.00001/call */
   aggLiqMap(params?: { 
     baseCoin?: string | number
     interval?: string | number
@@ -598,7 +598,7 @@ export class CoinankLiquidation {
     return this._client._get('/api/v1/coinank/liquidation/agg-liq-map', params)
   }
 
-  /** Liquidation heatmap — $0.001/call */
+  /** Liquidation heatmap — $0.00001/call */
   heatMap(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -607,7 +607,7 @@ export class CoinankLiquidation {
     return this._client._get('/api/v1/coinank/liquidation/heat-map', params)
   }
 
-  /** Supported symbols for liquidation heatmap — $0.001/call */
+  /** Supported symbols for liquidation heatmap — $0.00001/call */
   heatMapSymbols(): Promise<any> {
     return this._client._get('/api/v1/coinank/liquidation/heat-map-symbols')
   }
@@ -616,7 +616,7 @@ export class CoinankLiquidation {
 export class CoinankOrderbook {
   constructor(private _client: Claw402) {}
 
-  /** Order book depth history by trading pair (VIP3) — $0.001/call */
+  /** Order book depth history by trading pair (VIP3) — $0.00001/call */
   bySymbol(params?: { 
     symbol?: string | number
     exchange?: string | number
@@ -629,7 +629,7 @@ export class CoinankOrderbook {
     return this._client._get('/api/v1/coinank/orderbook/by-symbol', params)
   }
 
-  /** Order book depth history by exchange (VIP3) — $0.001/call */
+  /** Order book depth history by exchange (VIP3) — $0.00001/call */
   byExchange(params?: { 
     baseCoin?: string | number
     productType?: string | number
@@ -642,7 +642,7 @@ export class CoinankOrderbook {
     return this._client._get('/api/v1/coinank/orderbook/by-exchange', params)
   }
 
-  /** Order book liquidity heatmap (VIP4) — $0.001/call */
+  /** Order book liquidity heatmap (VIP4) — $0.00001/call */
   heatmap(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -657,7 +657,7 @@ export class CoinankOrderbook {
 export class CoinankFund {
   constructor(private _client: Claw402) {}
 
-  /** Real-time fund flow rankings (sortBy: h1net/h4net/h8net/h24net) — $0.001/call */
+  /** Real-time fund flow rankings (sortBy: h1net/h4net/h8net/h24net) — $0.00001/call */
   realtime(params?: { 
     productType?: string | number
     page?: string | number
@@ -669,7 +669,7 @@ export class CoinankFund {
     return this._client._get('/api/v1/coinank/fund/realtime', params)
   }
 
-  /** Historical fund flow data — $0.001/call */
+  /** Historical fund flow data — $0.00001/call */
   history(params?: { 
     baseCoin?: string | number
     endTime?: string | number
@@ -684,7 +684,7 @@ export class CoinankFund {
 export class CoinankOrderFlow {
   constructor(private _client: Claw402) {}
 
-  /** Order flow data — $0.001/call */
+  /** Order flow data — $0.00001/call */
   lists(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -701,7 +701,7 @@ export class CoinankOrderFlow {
 export class CoinankFundingRate {
   constructor(private _client: Claw402) {}
 
-  /** Historical funding rates (cross-exchange) — $0.001/call */
+  /** Historical funding rates (cross-exchange) — $0.00001/call */
   hist(params?: { 
     baseCoin?: string | number
     exchangeType?: string | number
@@ -711,21 +711,21 @@ export class CoinankFundingRate {
     return this._client._get('/api/v1/coinank/funding-rate/hist', params)
   }
 
-  /** Real-time funding rate rankings (type: current/day/week/month/year) — $0.001/call */
+  /** Real-time funding rate rankings (type: current/day/week/month/year) — $0.00001/call */
   current(params?: { 
     type?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/coinank/funding-rate/current', params)
   }
 
-  /** Accumulated funding rates (type: day/week/month/year) — $0.001/call */
+  /** Accumulated funding rates (type: day/week/month/year) — $0.00001/call */
   accumulated(params?: { 
     type?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/coinank/funding-rate/accumulated', params)
   }
 
-  /** Trading pair funding rate history (VIP1) — $0.001/call */
+  /** Trading pair funding rate history (VIP1) — $0.00001/call */
   indicator(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -736,7 +736,7 @@ export class CoinankFundingRate {
     return this._client._get('/api/v1/coinank/funding-rate/indicator', params)
   }
 
-  /** Funding rate candlestick — $0.001/call */
+  /** Funding rate candlestick — $0.00001/call */
   kline(params?: { 
     exchange?: string | number
     symbol?: string | number
@@ -747,7 +747,7 @@ export class CoinankFundingRate {
     return this._client._get('/api/v1/coinank/funding-rate/kline', params)
   }
 
-  /** Weighted average funding rate — $0.001/call */
+  /** Weighted average funding rate — $0.00001/call */
   weighted(params?: { 
     baseCoin?: string | number
     interval?: string | number
@@ -757,7 +757,7 @@ export class CoinankFundingRate {
     return this._client._get('/api/v1/coinank/funding-rate/weighted', params)
   }
 
-  /** Funding rate heatmap (type: openInterest/marketCap) — $0.001/call */
+  /** Funding rate heatmap (type: openInterest/marketCap) — $0.00001/call */
   heatmap(params?: { 
     type?: string | number
     interval?: string | number
@@ -769,7 +769,7 @@ export class CoinankFundingRate {
 export class CoinankRsi {
   constructor(private _client: Claw402) {}
 
-  /** RSI screener (interval uppercase: 1H/4H/1D) — $0.001/call */
+  /** RSI screener (interval uppercase: 1H/4H/1D) — $0.00001/call */
   list(params?: { 
     interval?: string | number
     exchange?: string | number
@@ -821,7 +821,7 @@ export class CoinankResource {
     this.rsi = new CoinankRsi(_client)
   }
 
-  /** Net long/short positions historical data — $0.001/call */
+  /** Net long/short positions historical data — $0.00001/call */
   netPositions(params?: { 
     exchange?: string | number
     symbol?: string | number
