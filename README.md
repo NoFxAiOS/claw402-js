@@ -5,7 +5,7 @@
 
 Typed TypeScript SDK for [claw402.ai](https://claw402.ai) — pay-per-call data APIs via [x402](https://www.x402.org/) micropayments.
 
-**200+ endpoints** covering crypto market data, US stocks, China A-shares, forex, global time-series, and AI (OpenAI/Anthropic). No API key, no signup, no subscription — just a Base wallet with USDC.
+**200+ endpoints** covering crypto market data, US stocks, China A-shares, forex, global time-series, and AI (OpenAI/Anthropic/DeepSeek/Qwen). No API key, no signup, no subscription — just a Base wallet with USDC.
 
 ## Install
 
@@ -55,7 +55,7 @@ console.log(msg)
 
 - **Typed methods** — every endpoint has a dedicated TypeScript method with inline type hints
 - **Automatic x402 payment** — signs EIP-3009 USDC transfers locally, never sends your key
-- **9 provider groups** — crypto, US stocks, China stocks, forex, global data, and AI
+- **11 provider groups** — crypto, US stocks, China stocks, forex, global data, and AI
 - **Zero config** — just a private key, no API keys or registration
 - **Base mainnet** — pays USDC per call on Coinbase L2
 
@@ -241,6 +241,30 @@ const resp = await client.anthropic.anthropic.messages({
   model: "claude-opus-4-6",
   max_tokens: 1024,
   messages: [{ role: "user", content: "Summarize this earnings report: ..." }]
+})
+```
+
+#### DeepSeek
+
+| Resource | Methods | Description |
+|----------|---------|-------------|
+| `deepseek.deepseek` | `chat`, `chatReasoner`, `completions`, `models` | DeepSeek chat, reasoning, beta completions, model listing — $0.001–0.005/call |
+
+```typescript
+const resp = await client.deepseek.deepseek.chat({
+  messages: [{ role: "user", content: "Explain BTC basis trade" }]
+})
+```
+
+#### Qwen
+
+| Resource | Methods | Description |
+|----------|---------|-------------|
+| `qwen.qwen` | `chatMax`, `chatPlus`, `chatTurbo`, `chatFlash`, `chatCoder`, `chatVl` | Qwen chat, coder, and vision models — $0.002–0.01/call |
+
+```typescript
+const resp = await client.qwen.qwen.chatMax({
+  messages: [{ role: "user", content: "Write a Go HTTP middleware" }]
 })
 ```
 

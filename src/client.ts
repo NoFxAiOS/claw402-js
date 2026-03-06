@@ -5,9 +5,11 @@ import { AlpacaResource } from "./generated/alpaca.js"
 import { AlphavantageResource } from "./generated/alphavantage.js"
 import { AnthropicResource } from "./generated/anthropic.js"
 import { CoinankResource } from "./generated/coinank.js"
+import { DeepseekResource } from "./generated/deepseek.js"
 import { NofxosResource } from "./generated/nofxos.js"
 import { OpenaiResource } from "./generated/openai.js"
 import { PolygonResource } from "./generated/polygon.js"
+import { QwenResource } from "./generated/qwen.js"
 import { TushareResource } from "./generated/tushare.js"
 import { TwelvedataResource } from "./generated/twelvedata.js"
 
@@ -71,6 +73,10 @@ export class Claw402 {
   openai: OpenaiResource
   /** Anthropic — Claude Sonnet, Haiku, Opus via Messages API */
   anthropic: AnthropicResource
+  /** DeepSeek — DeepSeek-Chat and DeepSeek-Reasoner via OpenAI-compatible API */
+  deepseek: DeepseekResource
+  /** Qwen — Alibaba Qwen chat, coder, and vision models via OpenAI-compatible API */
+  qwen: QwenResource
 
   constructor(opts: Claw402Options) {
     if (!opts.privateKey.startsWith("0x")) {
@@ -92,6 +98,8 @@ export class Claw402 {
     // AI models
     this.openai = new OpenaiResource(this)
     this.anthropic = new AnthropicResource(this)
+    this.deepseek = new DeepseekResource(this)
+    this.qwen = new QwenResource(this)
   }
 
   /** @internal — sign and send x402 payment for either GET or POST */
