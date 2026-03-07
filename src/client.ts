@@ -5,6 +5,7 @@ import { AlpacaResource } from "./generated/alpaca.js"
 import { AlphavantageResource } from "./generated/alphavantage.js"
 import { AnthropicResource } from "./generated/anthropic.js"
 import { CoinankResource } from "./generated/coinank.js"
+import { CoinmarketcapResource } from "./generated/coinmarketcap.js"
 import { DeepseekResource } from "./generated/deepseek.js"
 import { NofxosResource } from "./generated/nofxos.js"
 import { OpenaiResource } from "./generated/openai.js"
@@ -59,6 +60,8 @@ export class Claw402 {
   coinank: CoinankResource
   /** nofxos.ai — AI-powered crypto trading intelligence */
   nofxos: NofxosResource
+  /** CoinMarketCap — real-time crypto quotes, rankings, DEX pairs, AI MCP tools */
+  coinmarketcap: CoinmarketcapResource
   /** Alpha Vantage — US stock quotes, OHLCV, fundamentals, technical indicators */
   alphavantage: AlphavantageResource
   /** Polygon.io — US stock tick data, options, snapshots, reference data */
@@ -87,6 +90,7 @@ export class Claw402 {
     // Crypto data
     this.coinank = new CoinankResource(this)
     this.nofxos = new NofxosResource(this)
+    this.coinmarketcap = new CoinmarketcapResource(this)
     // US stocks
     this.alphavantage = new AlphavantageResource(this)
     this.polygon = new PolygonResource(this)

@@ -7,7 +7,7 @@ import type { Claw402 } from '../client.js'
 export class TushareCn {
   constructor(private _client: Claw402) {}
 
-  /** A-share daily OHLCV + price change — $0.00001/call */
+  /** A-share daily OHLCV + price change — $0.001/call */
   daily(params?: { 
     tsCode?: string | number
     tradeDate?: string | number
@@ -17,7 +17,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/daily', params)
   }
 
-  /** A-share weekly OHLCV — $0.00001/call */
+  /** A-share weekly OHLCV — $0.001/call */
   weekly(params?: { 
     tsCode?: string | number
     tradeDate?: string | number
@@ -27,7 +27,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/weekly', params)
   }
 
-  /** A-share monthly OHLCV — $0.00001/call */
+  /** A-share monthly OHLCV — $0.001/call */
   monthly(params?: { 
     tsCode?: string | number
     tradeDate?: string | number
@@ -37,7 +37,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/monthly', params)
   }
 
-  /** Daily valuation metrics: PE, PB, turnover rate, market cap — $0.00001/call */
+  /** Daily valuation metrics: PE, PB, turnover rate, market cap — $0.001/call */
   dailyBasic(params?: { 
     tsCode?: string | number
     tradeDate?: string | number
@@ -47,7 +47,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/daily-basic', params)
   }
 
-  /** A-share stock list: code, name, listing date, industry — $0.00001/call */
+  /** A-share stock list: code, name, listing date, industry — $0.001/call */
   stockBasic(params?: { 
     exchange?: string | number
     listStatus?: string | number
@@ -56,7 +56,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/stock-basic', params)
   }
 
-  /** Trading calendar — open/closed market days — $0.00001/call */
+  /** Trading calendar — open/closed market days — $0.001/call */
   tradeCal(params?: { 
     exchange?: string | number
     startDate?: string | number
@@ -66,7 +66,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/trade-cal', params)
   }
 
-  /** Income statement: revenue, net profit, gross margin — $0.00001/call */
+  /** Income statement: revenue, net profit, gross margin — $0.001/call */
   income(params?: { 
     tsCode?: string | number
     annDate?: string | number
@@ -78,7 +78,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/income', params)
   }
 
-  /** Balance sheet: assets, liabilities, equity — $0.00001/call */
+  /** Balance sheet: assets, liabilities, equity — $0.001/call */
   balanceSheet(params?: { 
     tsCode?: string | number
     annDate?: string | number
@@ -90,7 +90,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/balance-sheet', params)
   }
 
-  /** Cash flow statement: operating, investing, financing — $0.00001/call */
+  /** Cash flow statement: operating, investing, financing — $0.001/call */
   cashFlow(params?: { 
     tsCode?: string | number
     annDate?: string | number
@@ -102,7 +102,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/cash-flow', params)
   }
 
-  /** Historical dividends and rights offerings — $0.00001/call */
+  /** Historical dividends and rights offerings — $0.001/call */
   dividend(params?: { 
     tsCode?: string | number
     annDate?: string | number
@@ -113,7 +113,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/dividend', params)
   }
 
-  /** Northbound capital flow (Stock Connect daily net inflow) — $0.00001/call */
+  /** Northbound capital flow (Stock Connect daily net inflow) — $0.001/call */
   northbound(params?: { 
     tradeDate?: string | number
     startDate?: string | number
@@ -122,7 +122,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/northbound', params)
   }
 
-  /** Individual stock capital flow: big money vs. retail net inflow — $0.00001/call */
+  /** Individual stock capital flow: big money vs. retail net inflow — $0.001/call */
   moneyflow(params?: { 
     tsCode?: string | number
     tradeDate?: string | number
@@ -132,7 +132,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/moneyflow', params)
   }
 
-  /** Margin trading summary: total margin balance — $0.00001/call */
+  /** Margin trading summary: total margin balance — $0.001/call */
   margin(params?: { 
     tradeDate?: string | number
     startDate?: string | number
@@ -142,7 +142,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/margin', params)
   }
 
-  /** Per-stock margin trading detail (rzye, rqye) — $0.00001/call */
+  /** Per-stock margin trading detail (rzye, rqye) — $0.001/call */
   marginDetail(params?: { 
     tsCode?: string | number
     tradeDate?: string | number
@@ -152,7 +152,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/margin-detail', params)
   }
 
-  /** Dragon-Tiger list — notable institutional activity stocks — $0.00001/call */
+  /** Dragon-Tiger list — notable institutional activity stocks — $0.001/call */
   topList(params?: { 
     tradeDate?: string | number
     tsCode?: string | number
@@ -160,7 +160,7 @@ export class TushareCn {
     return this._client._get('/api/v1/stocks/cn/top-list', params)
   }
 
-  /** Dragon-Tiger institutional seat buy/sell details — $0.00001/call */
+  /** Dragon-Tiger institutional seat buy/sell details — $0.001/call */
   topInst(params?: { 
     tradeDate?: string | number
     tsCode?: string | number

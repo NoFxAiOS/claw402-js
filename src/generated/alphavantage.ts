@@ -7,21 +7,21 @@ import type { Claw402 } from '../client.js'
 export class AlphavantageUs {
   constructor(private _client: Claw402) {}
 
-  /** Real-time US stock quote (price, change, volume) — $0.00001/call */
+  /** Real-time US stock quote (price, change, volume) — $0.001/call */
   quote(params?: { 
     symbol?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/stocks/us/quote', params)
   }
 
-  /** Stock symbol search by keyword — $0.00001/call */
+  /** Stock symbol search by keyword — $0.001/call */
   search(params?: { 
     keywords?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/stocks/us/search', params)
   }
 
-  /** Daily OHLCV data (compact=100 days or full history) — $0.00001/call */
+  /** Daily OHLCV data (compact=100 days or full history) — $0.001/call */
   daily(params?: { 
     symbol?: string | number
     outputsize?: string | number
@@ -30,7 +30,7 @@ export class AlphavantageUs {
     return this._client._get('/api/v1/stocks/us/daily', params)
   }
 
-  /** Daily adjusted OHLCV (dividend & split adjusted) — $0.00001/call */
+  /** Daily adjusted OHLCV (dividend & split adjusted) — $0.001/call */
   dailyAdjusted(params?: { 
     symbol?: string | number
     outputsize?: string | number
@@ -39,7 +39,7 @@ export class AlphavantageUs {
     return this._client._get('/api/v1/stocks/us/daily-adjusted', params)
   }
 
-  /** Intraday OHLCV bars (1/5/15/30/60min intervals) — $0.00001/call */
+  /** Intraday OHLCV bars (1/5/15/30/60min intervals) — $0.001/call */
   intraday(params?: { 
     symbol?: string | number
     interval?: string | number
@@ -49,61 +49,61 @@ export class AlphavantageUs {
     return this._client._get('/api/v1/stocks/us/intraday', params)
   }
 
-  /** Weekly OHLCV time series — $0.00001/call */
+  /** Weekly OHLCV time series — $0.001/call */
   weekly(params?: { 
     symbol?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/stocks/us/weekly', params)
   }
 
-  /** Monthly OHLCV time series — $0.00001/call */
+  /** Monthly OHLCV time series — $0.001/call */
   monthly(params?: { 
     symbol?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/stocks/us/monthly', params)
   }
 
-  /** Company overview: market cap, PE, PB, revenue, EPS, dividends — $0.00001/call */
+  /** Company overview: market cap, PE, PB, revenue, EPS, dividends — $0.001/call */
   overview(params?: { 
     symbol?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/stocks/us/overview', params)
   }
 
-  /** Quarterly & annual EPS vs. analyst estimates — $0.00001/call */
+  /** Quarterly & annual EPS vs. analyst estimates — $0.001/call */
   earnings(params?: { 
     symbol?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/stocks/us/earnings', params)
   }
 
-  /** Income statement (quarterly & annual) — $0.00001/call */
+  /** Income statement (quarterly & annual) — $0.001/call */
   income(params?: { 
     symbol?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/stocks/us/income', params)
   }
 
-  /** Balance sheet (quarterly & annual) — $0.00001/call */
+  /** Balance sheet (quarterly & annual) — $0.001/call */
   balanceSheet(params?: { 
     symbol?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/stocks/us/balance-sheet', params)
   }
 
-  /** Cash flow statement (quarterly & annual) — $0.00001/call */
+  /** Cash flow statement (quarterly & annual) — $0.001/call */
   cashFlow(params?: { 
     symbol?: string | number
   }): Promise<any> {
     return this._client._get('/api/v1/stocks/us/cash-flow', params)
   }
 
-  /** Top gainers, losers, and most active stocks today — $0.00001/call */
+  /** Top gainers, losers, and most active stocks today — $0.001/call */
   movers(): Promise<any> {
     return this._client._get('/api/v1/stocks/us/movers')
   }
 
-  /** News articles with AI sentiment scores (bullish/bearish) — $0.00001/call */
+  /** News articles with AI sentiment scores (bullish/bearish) — $0.001/call */
   news(params?: { 
     tickers?: string | number
     topics?: string | number
@@ -115,7 +115,7 @@ export class AlphavantageUs {
     return this._client._get('/api/v1/stocks/us/news', params)
   }
 
-  /** Relative Strength Index (RSI) — $0.00001/call */
+  /** Relative Strength Index (RSI) — $0.001/call */
   rsi(params?: { 
     symbol?: string | number
     interval?: string | number
@@ -125,7 +125,7 @@ export class AlphavantageUs {
     return this._client._get('/api/v1/stocks/us/rsi', params)
   }
 
-  /** MACD (signal, histogram, fast/slow lines) — $0.00001/call */
+  /** MACD (signal, histogram, fast/slow lines) — $0.001/call */
   macd(params?: { 
     symbol?: string | number
     interval?: string | number
@@ -137,7 +137,7 @@ export class AlphavantageUs {
     return this._client._get('/api/v1/stocks/us/macd', params)
   }
 
-  /** Bollinger Bands (upper, middle, lower) — $0.00001/call */
+  /** Bollinger Bands (upper, middle, lower) — $0.001/call */
   bbands(params?: { 
     symbol?: string | number
     interval?: string | number
@@ -149,7 +149,7 @@ export class AlphavantageUs {
     return this._client._get('/api/v1/stocks/us/bbands', params)
   }
 
-  /** Simple Moving Average (SMA) — $0.00001/call */
+  /** Simple Moving Average (SMA) — $0.001/call */
   sma(params?: { 
     symbol?: string | number
     interval?: string | number
@@ -159,7 +159,7 @@ export class AlphavantageUs {
     return this._client._get('/api/v1/stocks/us/sma', params)
   }
 
-  /** Exponential Moving Average (EMA) — $0.00001/call */
+  /** Exponential Moving Average (EMA) — $0.001/call */
   ema(params?: { 
     symbol?: string | number
     interval?: string | number
