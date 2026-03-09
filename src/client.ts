@@ -12,6 +12,10 @@ import { OpenaiResource } from "./generated/openai.js"
 import { PolygonResource } from "./generated/polygon.js"
 import { QwenResource } from "./generated/qwen.js"
 import { TushareResource } from "./generated/tushare.js"
+import { GeminiResource } from "./generated/gemini.js"
+import { GrokResource } from "./generated/grok.js"
+import { KimiResource } from "./generated/kimi.js"
+import { RootdataResource } from "./generated/rootdata.js"
 import { TwelvedataResource } from "./generated/twelvedata.js"
 
 /** Base chain ID (Coinbase L2) */
@@ -80,6 +84,14 @@ export class Claw402 {
   deepseek: DeepseekResource
   /** Qwen — Alibaba Qwen chat, coder, and vision models via OpenAI-compatible API */
   qwen: QwenResource
+  /** Gemini — Google Gemini 3.1 Pro, 3 Flash, 2.5 Pro/Flash via OpenAI-compatible API */
+  gemini: GeminiResource
+  /** Grok — xAI Grok-4.1, Grok-4, Grok-3 Mini via OpenAI-compatible API */
+  grok: GrokResource
+  /** Kimi — Moonshot Kimi K2.5, K2 via OpenAI-compatible API */
+  kimi: KimiResource
+  /** RootData — Web3 project, VC, funding round, KOL intelligence */
+  rootdata: RootdataResource
 
   constructor(opts: Claw402Options) {
     if (!opts.privateKey.startsWith("0x")) {
@@ -104,6 +116,11 @@ export class Claw402 {
     this.anthropic = new AnthropicResource(this)
     this.deepseek = new DeepseekResource(this)
     this.qwen = new QwenResource(this)
+    this.gemini = new GeminiResource(this)
+    this.grok = new GrokResource(this)
+    this.kimi = new KimiResource(this)
+    // Web3 intelligence
+    this.rootdata = new RootdataResource(this)
   }
 
   /** @internal — sign and send x402 payment for either GET or POST */
